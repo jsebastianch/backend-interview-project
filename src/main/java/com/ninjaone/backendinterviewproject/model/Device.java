@@ -4,11 +4,12 @@
 package com.ninjaone.backendinterviewproject.model;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import com.ninjaone.backendinterviewproject.enumeration.DeviceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * @author sebas
@@ -18,11 +19,13 @@ import com.ninjaone.backendinterviewproject.enumeration.DeviceType;
 public class Device {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	private String systemName;
 	
-	@Enumerated(EnumType.STRING)
+	@ManyToOne
+	@JoinColumn(name = "device_type_id", nullable = false, foreignKey = @ForeignKey(name = "FK_device_to_device_type"))
 	private DeviceType type;
 
 	/**
