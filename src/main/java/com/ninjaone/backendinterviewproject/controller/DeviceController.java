@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @author sebas
  *
  */
-//@RestController
-//@RequestMapping("/device")
+@RestController
+@RequestMapping("/device")
 public class DeviceController {
 
 }
