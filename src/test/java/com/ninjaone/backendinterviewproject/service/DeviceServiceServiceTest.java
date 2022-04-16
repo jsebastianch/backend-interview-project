@@ -29,7 +29,6 @@ import lombok.extern.log4j.Log4j2;
  * @author sebas
  *
  */
-@Log4j2
 @ExtendWith(MockitoExtension.class)
 public class DeviceServiceServiceTest {
 
@@ -60,7 +59,6 @@ public class DeviceServiceServiceTest {
 
 	@Test
 	void shouldReturnEntityWhenInsertingAndNoRepeatedName() throws Exception {
-		log.info("ESTA AQUI CONCHA");
 		DeviceService ds = new DeviceService(null, NAME);
 		when(deviceServiceRepository.findByNameIgnoreCase(NAME)).thenReturn(new ArrayList<>());
 		when(this.deviceServiceService.insert(ds)).thenReturn(deviceService);

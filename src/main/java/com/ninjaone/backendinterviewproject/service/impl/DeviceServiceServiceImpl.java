@@ -33,9 +33,10 @@ public class DeviceServiceServiceImpl extends CRUDImpl<DeviceService, Integer> i
 
 	@Override
 	public DeviceService insertDeviceService(DeviceService deviceService) throws Exception {
+		log.info("Inserting device");
 		List<DeviceService> services = this.repo.findByNameIgnoreCase(deviceService.getName());
-		log.info("ESTA AQUI CONCHA");
 		if (services != null && Boolean.FALSE.equals(services.isEmpty())) {
+			log.info("Device name already exists.");
 			throw new Exception("Device already exists");
 		}
 		return this.insert(deviceService);
