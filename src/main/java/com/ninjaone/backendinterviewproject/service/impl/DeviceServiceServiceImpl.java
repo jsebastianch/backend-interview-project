@@ -34,12 +34,36 @@ public class DeviceServiceServiceImpl extends CRUDImpl<DeviceService, Integer> i
 	@Override
 	public DeviceService insertDeviceService(DeviceService deviceService) throws Exception {
 		log.info("Inserting device");
-		List<DeviceService> services = this.repo.findByNameIgnoreCase(deviceService.getName());
-		if (services != null && Boolean.FALSE.equals(services.isEmpty())) {
-			log.info("Device name already exists.");
-			throw new Exception("Device already exists");
-		}
+		this.isDuplicateDeviceService(deviceService);
 		return this.insert(deviceService);
+	}
+	
+	@Override
+	public DeviceService update(DeviceService deviceService) throws Exception {
+		log.info("Inserting device");
+		this.isDuplicateDeviceService(deviceService);
+		return super.update(deviceService);
+	} 
+	
+	/**
+	 * Checks if a service has been already created.
+	 * @param deviceService the service to check
+	 * @throws Exception if device is present.
+	 */
+	private void isDuplicateDeviceService(DeviceService deviceService) throws Exception {
+		List<DeviceService> services = this.repo.findByNameIgnoreCase(deviceService.getName());
+		Boolean updating = deviceService.getId() != null;
+		if (services != null && Boolean.FALSE.equals(services.isEmpty()) && Boolean.FALSE.equals(updating)) {
+			log.info("Device name already exists.");
+			throw new Exception("Device already exists when creating");
+		} else if (services != null && Boolean.FALSE.equals(services.isEmpty())) {
+			for (DeviceService ds : services) {
+				if(deviceService.getId().compareTo(ds.getId()) != 0) {
+					log.info("Device name already exists when updating.");
+					throw new Exception("Device already exists");
+				}
+			}
+		}
 	}
 
 }

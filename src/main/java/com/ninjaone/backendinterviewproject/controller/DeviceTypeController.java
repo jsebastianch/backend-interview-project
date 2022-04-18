@@ -45,11 +45,13 @@ public class DeviceTypeController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<DeviceType> registrar(@RequestBody IdNameDTO dto) throws Exception {
+	public ResponseEntity<DeviceType> addDeviceType(@RequestBody IdNameDTO dto) throws Exception {
 		DeviceType type = this.deviceTypeService.insert(new DeviceType(null, dto.getName()));
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(type.getId()).toUri();
 		return ResponseEntity.created(location).build();
 	}
+	
+	
 
 }
