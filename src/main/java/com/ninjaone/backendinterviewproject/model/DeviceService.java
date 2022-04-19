@@ -7,12 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * @author sebas
  *
  */
 @Entity
+@Table(name = "device_service")
 public class DeviceService {
 	
 	@Id
@@ -20,13 +22,22 @@ public class DeviceService {
 	private Integer id;
 	
 	private String name;
+	
+	
+
+	/**
+	 * Default constructor.
+	 */
+	public DeviceService() {
+		super();
+	}
 
 	/**
 	 * @param id
 	 * @param name
 	 */
 	public DeviceService(Integer id, String name) {
-		super();
+		this();
 		this.id = id;
 		this.name = name;
 	}

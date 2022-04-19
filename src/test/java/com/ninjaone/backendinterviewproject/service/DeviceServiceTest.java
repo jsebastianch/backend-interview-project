@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -40,7 +41,7 @@ public class DeviceServiceTest {
 
 	private Device device;
 	
-	private final DeviceType deviceType = new DeviceType(ID, "Windows");
+	private final DeviceType deviceType = new DeviceType(ID, "Windows", new BigDecimal(4));
 
 	@BeforeEach
 	void setup() {

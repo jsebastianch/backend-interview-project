@@ -1,43 +1,25 @@
 /**
  * 
  */
-package com.ninjaone.backendinterviewproject.model;
+package com.ninjaone.backendinterviewproject.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.math.BigDecimal;
 
 /**
- * @author sebas
+ * @author Sebastian
  *
  */
-@Entity
-@Table(name = "customer")
-public class Customer {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class DeviceTypeDTO {
+
 	private Integer id;
-	
 	private String name;
+	private BigDecimal cost;
 
 	/**
-	 * Default constructor.
+	 * 
 	 */
-	public Customer() {
+	public DeviceTypeDTO() {
 		super();
-	}
-
-	/**
-	 * @param id
-	 * @param name
-	 */
-	public Customer(Integer id, String name) {
-		this();
-		this.id = id;
-		this.name = name;
 	}
 
 	/**
@@ -72,4 +54,19 @@ public class Customer {
 		this.name = name;
 	}
 
+	/**
+	 * Obtains the value for the field cost.
+	 * @return the cost
+	 */
+	public BigDecimal getCost() {
+		return cost;
+	}
+
+	/**
+	 * Sets the value to the field cost.
+	 * @param cost the cost to set
+	 */
+	public void setCost(BigDecimal cost) {
+		this.cost = cost;
+	}
 }

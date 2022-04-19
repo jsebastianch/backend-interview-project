@@ -8,12 +8,14 @@ import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.Table;
 
 /**
  * @author sebas
  *
  */
 @Entity
+@Table(name = "device_type_service_cost")
 @IdClass(DeviceTypeServiceCostPK.class)
 public class DeviceTypeServiceCost {
 

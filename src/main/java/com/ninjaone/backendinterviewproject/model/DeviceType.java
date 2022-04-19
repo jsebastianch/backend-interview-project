@@ -1,11 +1,15 @@
 package com.ninjaone.backendinterviewproject.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "device_type")
 public class DeviceType {
 	
 	@Id
@@ -13,6 +17,8 @@ public class DeviceType {
 	private Integer id;
 	
 	private String name;
+	
+	private BigDecimal cost;
 	
 	
 
@@ -27,10 +33,11 @@ public class DeviceType {
 	 * @param id
 	 * @param name
 	 */
-	public DeviceType(Integer id, String name) {
+	public DeviceType(Integer id, String name, BigDecimal cost) {
 		this();
 		this.id = id;
 		this.name = name;
+		this.cost = cost;
 	}
 
 	/**
@@ -64,4 +71,19 @@ public class DeviceType {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	/**
+	 * @return the cost
+	 */
+	public BigDecimal getCost() {
+		return cost;
+	}
+
+	/**
+	 * @param cost the cost to set
+	 */
+	public void setCost(BigDecimal cost) {
+		this.cost = cost;
+	}
+	
 }

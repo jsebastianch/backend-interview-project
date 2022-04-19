@@ -24,7 +24,7 @@ public class DeviceTypeServiceCostPK implements Serializable {
 	
 
 	@ManyToOne
-	@JoinColumn(name = "device_id", nullable = false, foreignKey = @ForeignKey(name = "FK_device_type"))
+	@JoinColumn(name = "device_type_id", nullable = false, foreignKey = @ForeignKey(name = "FK_device_type"))
 	private DeviceType deviceType;
 
 	@ManyToOne

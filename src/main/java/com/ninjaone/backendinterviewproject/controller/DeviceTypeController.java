@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.ninjaone.backendinterviewproject.dto.IdNameDTO;
+import com.ninjaone.backendinterviewproject.dto.DeviceTypeDTO;
 import com.ninjaone.backendinterviewproject.model.DeviceType;
 import com.ninjaone.backendinterviewproject.service.DeviceTypeService;
 
@@ -45,8 +45,8 @@ public class DeviceTypeController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<DeviceType> addDeviceType(@RequestBody IdNameDTO dto) throws Exception {
-		DeviceType type = this.deviceTypeService.insert(new DeviceType(null, dto.getName()));
+	public ResponseEntity<DeviceType> addDeviceType(@RequestBody DeviceTypeDTO dto) throws Exception {
+		DeviceType type = this.deviceTypeService.insert(new DeviceType(null, dto.getName(), dto.getCost()));
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(type.getId()).toUri();
 		return ResponseEntity.created(location).build();
