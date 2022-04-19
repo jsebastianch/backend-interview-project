@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 
 import com.ninjaone.backendinterviewproject.database.IGenericRepo;
 import com.ninjaone.backendinterviewproject.service.ICRUD;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 public abstract class CRUDImpl<T, ID> implements ICRUD<T, ID> {
 
 	protected abstract IGenericRepo<T, ID> getRepo();
@@ -45,7 +49,16 @@ public abstract class CRUDImpl<T, ID> implements ICRUD<T, ID> {
 
 	@Override
 	public void delete(ID id) throws Exception {
-		getRepo().deleteById(id);
+		try {
+			getRepo().deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			log.error(e.getCause().getMessage());
+			log.error(e.getMessage());
+			throw new DataIntegrityViolationException("Can't delete, resource is in use");
+		} catch (EmptyResultDataAccessException e) {
+			log.error(e.getMessage());
+			throw new EmptyResultDataAccessException("Can't delete, resource is not present.",e.getExpectedSize());
+		}
 	}
 
 }

@@ -5,6 +5,7 @@ package com.ninjaone.backendinterviewproject.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ninjaone.backendinterviewproject.database.DeviceRepository;
@@ -22,6 +23,7 @@ import lombok.extern.log4j.Log4j2;
 @Service
 public class DeviceServiceImpl extends CRUDImpl<Device, Integer> implements DeviceService{
 
+	@Autowired	
 	private DeviceRepository repo;
 
 	@Override

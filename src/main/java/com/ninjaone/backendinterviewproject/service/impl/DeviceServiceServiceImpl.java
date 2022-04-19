@@ -54,13 +54,13 @@ public class DeviceServiceServiceImpl extends CRUDImpl<DeviceService, Integer> i
 		List<DeviceService> services = this.repo.findByNameIgnoreCase(deviceService.getName());
 		Boolean updating = deviceService.getId() != null;
 		if (services != null && Boolean.FALSE.equals(services.isEmpty()) && Boolean.FALSE.equals(updating)) {
-			log.info("Device name already exists.");
-			throw new Exception("Device already exists when creating");
+			log.info("Service name already exists.");
+			throw new Exception("Service already exists when creating");
 		} else if (services != null && Boolean.FALSE.equals(services.isEmpty())) {
 			for (DeviceService ds : services) {
 				if(deviceService.getId().compareTo(ds.getId()) != 0) {
-					log.info("Device name already exists when updating.");
-					throw new Exception("Device already exists");
+					log.info("Service name already exists when updating.");
+					throw new Exception("Service already exists");
 				}
 			}
 		}

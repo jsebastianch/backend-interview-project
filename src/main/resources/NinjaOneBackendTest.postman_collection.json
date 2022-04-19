@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "cd6e829f-5d87-432a-989d-287dffc9bca2",
+		"name": "NinjaOneBackendTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getCustomerMonthlyCost",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer/services-cost/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"services-cost",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addDevice",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Another Windows PC\",\r\n    \"deviceTypeId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/device",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getDevices",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/device/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"device",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getDeviceById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/device/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"device",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateDevice",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1,\r\n    \"name\":\"First Windows PC\",\r\n    \"deviceTypeId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/device/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"device",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteDevice",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/device/6",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"device",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getDeviceServices",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/service/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"service",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addService",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Another new service\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/service/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"service",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteService",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/service/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"service",
+						"5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
