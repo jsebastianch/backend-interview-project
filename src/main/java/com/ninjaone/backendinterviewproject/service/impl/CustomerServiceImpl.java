@@ -24,10 +24,13 @@ import com.ninjaone.backendinterviewproject.service.CustomerDeviceServiceService
 import com.ninjaone.backendinterviewproject.service.CustomerService;
 import com.ninjaone.backendinterviewproject.service.DeviceTypeServiceCostService;
 
+import lombok.extern.log4j.Log4j2;
+
 /**
  * @author Sebastian
  *
  */
+@Log4j2
 @Service
 public class CustomerServiceImpl extends CRUDImpl<Customer, Integer> implements CustomerService {
 
@@ -56,6 +59,7 @@ public class CustomerServiceImpl extends CRUDImpl<Customer, Integer> implements 
 		List<CustomerDeviceService> serviceList = this.customerDeviceServiceService.findByCustomer(customer);
 		customerCostDetailDTO.setTotalCost(BigDecimal.ZERO);
 		for (Device device : devices) {
+			log.info("Device: "+device+" cost:"+ device.getType().getCost());
 			List<CustomerDeviceService> deviceServices = serviceList.stream()
 					.filter(service -> service.getDevice().equals(device)).collect(Collectors.toList());
 			customerCostDetailDTO.setTotalCost(customerCostDetailDTO.getTotalCost().add(device.getType().getCost()));
@@ -83,6 +87,7 @@ public class CustomerServiceImpl extends CRUDImpl<Customer, Integer> implements 
 					.findOneByDeviceTypeAndDeviceService(customerDeviceService.getDevice().getType(),
 							customerDeviceService.getDeviceService());
 			BigDecimal serviceCost = deviceTypeServiceCost.getCost();
+			log.info("Service: "+deviceTypeServiceCost.getDeviceService().getName()+" cost:"+ deviceTypeServiceCost.getCost());
 			customerCostDetailDTO.setTotalCost(customerCostDetailDTO.getTotalCost().add(serviceCost));
 			dtos.add(new CustomerDeviceServiceDTO(customerDeviceService.getDeviceService().getName(), serviceCost));
 		}

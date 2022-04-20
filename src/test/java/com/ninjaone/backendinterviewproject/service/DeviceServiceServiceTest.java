@@ -18,12 +18,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.ninjaone.backendinterviewproject.database.DeviceServiceRepository;
-import com.ninjaone.backendinterviewproject.model.Device;
 import com.ninjaone.backendinterviewproject.model.DeviceService;
-import com.ninjaone.backendinterviewproject.service.impl.CRUDImpl;
 import com.ninjaone.backendinterviewproject.service.impl.DeviceServiceServiceImpl;
-
-import lombok.extern.log4j.Log4j2;
 
 /**
  * @author sebas
@@ -60,6 +56,23 @@ public class DeviceServiceServiceTest {
 	@Test
 	void shouldReturnEntityWhenInsertingAndNoRepeatedName() throws Exception {
 		DeviceService ds = new DeviceService(null, NAME);
+		when(deviceServiceRepository.findByNameIgnoreCase(NAME)).thenReturn(new ArrayList<>());
+		when(this.deviceServiceService.insert(ds)).thenReturn(deviceService);
+		assertEquals(deviceService, this.deviceServiceService.insertDeviceService(ds));
+	}
+	
+	@Test
+	void shouldThrowExceptionOnUpdatingWhenRepeatedName() {
+		when(deviceServiceRepository.findByNameIgnoreCase(NAME))
+				.thenReturn(Arrays.asList(deviceService, deviceService, deviceService));
+		assertThrows(Exception.class, () -> {
+			this.deviceServiceService.update(new DeviceService(2, NAME));
+		});
+	}
+
+	@Test
+	void shouldReturnEntityWhenUpdatingAndNoRepeatedName() throws Exception {
+		DeviceService ds = new DeviceService(2, NAME);
 		when(deviceServiceRepository.findByNameIgnoreCase(NAME)).thenReturn(new ArrayList<>());
 		when(this.deviceServiceService.insert(ds)).thenReturn(deviceService);
 		assertEquals(deviceService, this.deviceServiceService.insertDeviceService(ds));

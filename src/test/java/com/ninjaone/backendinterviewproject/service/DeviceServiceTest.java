@@ -64,5 +64,23 @@ public class DeviceServiceTest {
 		when(this.deviceRepository.save(ds)).thenReturn(device);
 		assertEquals(device, this.deviceService.insert(ds));
 	}
+	
+	
+	@Test
+	void shouldThrowExceptionOnUpdatingWhenRepeatedName() {
+		when(deviceRepository.findBySystemNameIgnoreCase(NAME))
+				.thenReturn(Arrays.asList(device, device, device));
+		assertThrows(Exception.class, () -> {
+			this.deviceService.update(new Device(2, NAME, deviceType));
+		});
+	}
+
+	@Test
+	void shouldReturnEntityWhenUpdatingAndNoRepeatedName() throws Exception {
+		Device ds = new Device(ID, NAME, deviceType);
+		when(deviceRepository.findBySystemNameIgnoreCase(NAME)).thenReturn(new ArrayList<>());
+		when(this.deviceRepository.save(ds)).thenReturn(device);
+		assertEquals(device, this.deviceService.update(ds));
+	}
 
 }
