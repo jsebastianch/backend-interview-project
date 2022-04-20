@@ -17,4 +17,20 @@ spring:
         enabled: true
         settings:
           web-allow-others: false
+    main:
+      allow-circular-references: true
+security:
+  oauth2:
+    resource:
+      filter-order: 3
+  signing-key: MaYzkSjmkzPC57L
+  encoding-strength: 256
+  security-realm: Spring Boot JWT
+  jwt:
+    client-id: ninjaone
+    client-secret: ninjaonesecret
+    grant-type: password
+    scope-read: read
+    scope-write: write
+    resource-ids: ninjaresourceid
           
