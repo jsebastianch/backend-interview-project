@@ -51,10 +51,11 @@ Authenticate user, creates a new authorization token.
 >```
 ### 🔑 Authentication basic
 
-|Param|value|Type|
-|---|---|---|
-
-
+Body: url encoded
+|Param|value|
+|grant_type|password|
+|username|sebastian|
+|password|sebaspwd|
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
 
