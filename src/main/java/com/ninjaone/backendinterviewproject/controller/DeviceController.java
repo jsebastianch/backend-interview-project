@@ -57,9 +57,9 @@ public class DeviceController {
 	public ResponseEntity<Device> addDevice(@RequestBody DeviceDTO dto) {
 		try {
 			DeviceType dt = this.deviceTypeService.findById(dto.getDeviceTypeId());
-			Device service = this.deviceService.insert(new Device(null, dto.getName(), dt));
+			Device device = this.deviceService.insert(new Device(null, dto.getName(), dt));
 			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-					.buildAndExpand(service.getId()).toUri();
+					.buildAndExpand(device.getId()).toUri();
 			return ResponseEntity.created(location).build();
 		} catch (Exception exc) {
 			throw new ResponseStatusException(HttpStatus.CONFLICT, exc.getMessage(), exc);
@@ -82,8 +82,8 @@ public class DeviceController {
 	public ResponseEntity<Device> updateDevice(@RequestBody DeviceDTO dto) {
 		try {
 			DeviceType dt = this.deviceTypeService.findById(dto.getDeviceTypeId());
-			Device service = this.deviceService.update(new Device(dto.getId(), dto.getName(), dt));
-			return new ResponseEntity<Device>(service, HttpStatus.OK);
+			Device device = this.deviceService.update(new Device(dto.getId(), dto.getName(), dt));
+			return new ResponseEntity<Device>(device, HttpStatus.OK);
 		} catch (Exception exc) {
 			throw new ResponseStatusException(HttpStatus.CONFLICT, exc.getMessage(), exc);
 		}
