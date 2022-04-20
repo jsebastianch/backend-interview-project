@@ -56,7 +56,8 @@
 						"oauth",
 						"token"
 					]
-				}
+				},
+				"description": "Authenticate user, creates a new authorization token."
 			},
 			"response": []
 		},
@@ -97,7 +98,8 @@
 						"services-cost",
 						"1"
 					]
-				}
+				},
+				"description": "Gets the monthly cost for a specific customer."
 			},
 			"response": []
 		},
@@ -124,7 +126,8 @@
 					"path": [
 						"device"
 					]
-				}
+				},
+				"description": "Creates a new device"
 			},
 			"response": []
 		},
@@ -143,7 +146,8 @@
 						"device",
 						""
 					]
-				}
+				},
+				"description": "Gets a list of al created devices."
 			},
 			"response": []
 		},
@@ -162,7 +166,8 @@
 						"device",
 						"1"
 					]
-				}
+				},
+				"description": "Gets a device by its ID."
 			},
 			"response": []
 		},
@@ -190,7 +195,8 @@
 						"device",
 						""
 					]
-				}
+				},
+				"description": "Updates a device information."
 			},
 			"response": []
 		},
@@ -209,7 +215,8 @@
 						"device",
 						"6"
 					]
-				}
+				},
+				"description": "Deletes a device"
 			},
 			"response": []
 		},
@@ -229,7 +236,8 @@
 						"service",
 						""
 					]
-				}
+				},
+				"description": "Gets all created services."
 			},
 			"response": []
 		},
@@ -258,7 +266,8 @@
 						"service",
 						""
 					]
-				}
+				},
+				"description": "Creates a new service."
 			},
 			"response": []
 		},
@@ -287,7 +296,8 @@
 						"user",
 						"add"
 					]
-				}
+				},
+				"description": "Creates a new User"
 			},
 			"response": []
 		},
@@ -307,7 +317,8 @@
 						"service",
 						"5"
 					]
-				}
+				},
+				"description": "Deletes a service by its id."
 			},
 			"response": []
 		}
