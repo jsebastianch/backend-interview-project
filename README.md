@@ -58,6 +58,11 @@ Body: url encoded
 |username|sebastian|
 |password|sebaspwd|
 
+### 🔑 Authorization Basic Auth
+    
+|Username|password|
+|---|---|
+|ninjaone|ninjaonesecret|
 
 ## End-point: getCustomerMonthlyCost
 Gets the monthly cost for a specific customer.
